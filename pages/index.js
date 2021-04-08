@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
-import {ChevronLeftIcon, ChevronRightIcon, CheckIcon} from '@primer/octicons-react'
 import DoggoCard from '../components/doggoCard'
+import { Shuffle } from 'react-feather'
 
 export default function Home() {
   const leftDoggo = {
@@ -34,6 +34,10 @@ export default function Home() {
                     <h3 className={"card-text"}>
                       Choose a doggo
                     </h3>
+                    <button type="button" className={"btn btn-danger btn-lg"}>
+                      Shuffle
+                      <Shuffle color="white" size={24} />
+                    </button>
                   </div>
                 </div>
               </div>
