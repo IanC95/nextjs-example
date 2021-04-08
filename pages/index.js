@@ -1,50 +1,48 @@
 import Head from 'next/head'
-import Link from 'next/link'
-
-import Date from '../components/date'
 import Layout, { siteTitle } from '../components/layout'
-import { getSortedPostsData } from '../lib/posts'
+import {ChevronLeftIcon, ChevronRightIcon, CheckIcon} from '@primer/octicons-react'
+import DoggoCard from '../components/doggoCard'
 
-import utilStyles from '../styles/utils.module.css'
-
-export async function getStaticProps() {
-  const allPostsData = getSortedPostsData()
-  return {
-    props: {
-      allPostsData
-    }
+export default function Home() {
+  const leftDoggo = {
+    name: "Corgi",
+    image: "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/14112506/Pembroke-Welsh-Corgi-standing-outdoors-in-the-fall.jpg",
+    description: "Left Hand Doggo"
   }
-}
 
-export default function Home({ allPostsData }) {
+  const rightDoggo = {
+    name: "Daschund",
+    image: "https://thehappypuppysite.com/wp-content/uploads/2018/10/dapple-dachshund-long.jpg",
+    description: "Right Hand Doggo"
+  }
+
   return (
     <Layout home>
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section className={utilStyles.headingMd}>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas massa lorem, tincidunt id porttitor et, eleifend ac orci. In nec eros id nunc molestie hendrerit quis quis ante. Ut a rhoncus purus. Aliquam erat volutpat. Curabitur eget orci nec nibh tempor sodales. Praesent molestie erat augue, dapibus pellentesque nisl scelerisque auctor. Nulla bibendum lectus non ex porta, eget dictum lectus tristique. Sed dapibus sodales faucibus. Nulla consequat nulla ut lorem feugiat consequat. Mauris malesuada turpis ipsum, non pellentesque libero commodo in. Nam aliquam, justo eu porttitor mattis, metus ex sollicitudin augue, ac faucibus libero sem vitae mi. </p>
-        <p>
-          (This is a sample website - you’ll be building a site like this on{' '}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
-        </p>
-      </section>
-
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
-        <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-            <Link href={`/posts/${id}`}>
-              <a>{title}</a>
-            </Link>
-            <br />
-            <small className={utilStyles.lightText}>
-              <Date dateString={date} />
-            </small>
-          </li>          
-          ))}
-        </ul>
+      <section>
+        <div className={"container-fluid"}>
+          <div className={"row"}>
+            <div className={"col-md-12 row"}>
+              <div className={"col-md-4"}>
+                <DoggoCard doggoCardProps={leftDoggo} />
+              </div>
+              <div className={"col-md-4"}>
+                <div className={"card text-center"}>
+                  <div className={"card-body align-self-center"}>
+                    <h3 className={"card-text"}>
+                      Choose a doggo
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div className={"col-md-4"}>
+                <DoggoCard doggoCardProps={rightDoggo} />
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </Layout>
   )

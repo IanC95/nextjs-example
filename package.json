@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@primer/octicons-react": "^13.0.0",
     "bootstrap": "^5.0.0-beta3",
     "date-fns": "^2.19.0",
     "gray-matter": "^4.0.2",
