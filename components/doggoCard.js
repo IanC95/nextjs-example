@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { Check } from 'react-feather'
 import Link from 'next/link'
 
-export default function DoggoCard({ doggoCardProps, rotateCW }) {
+export default function DoggoCard({ doggoCardProps, rotateCW, opponentName }) {
     const rotateClassName = rotateCW ? styles.enlargeOnHoverCCW : styles.enlargeOnHoverCW
 
     return (

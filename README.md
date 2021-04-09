@@ -1,1 +1,3 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+Dog Rating App
+
+Dog svgs from https://www.svgrepo.com/collection/dog-breeds-fullbody/1

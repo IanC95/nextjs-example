@@ -29,7 +29,7 @@ export default function Home(props) {
           <div className={"row"}>
             <div className={"col-md-12 row"}>
               <div className={"col-md-4"}>
-                <DoggoCard doggoCardProps={leftDoggo} rotateCW={false} />
+                <DoggoCard doggoCardProps={leftDoggo} rotateCW={false} oponentName={rightDoggo.name} />
               </div>
               <div className={"col-md-4"}>
                 <div className={"card text-center"}>
@@ -47,7 +47,7 @@ export default function Home(props) {
                 </div>
               </div>
               <div className={"col-md-4"}>
-                <DoggoCard doggoCardProps={rightDoggo} rotateCW={true} />
+                <DoggoCard doggoCardProps={rightDoggo} rotateCW={true} opponentName={leftDoggo.name} />
               </div>
             </div>
           </div>
