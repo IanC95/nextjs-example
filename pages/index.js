@@ -1,20 +1,23 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import Layout, { siteTitle } from '../components/layout'
 import DoggoCard from '../components/doggoCard'
 import { Shuffle } from 'react-feather'
+import { getTwoDogs } from '../lib/dogs'
 
-export default function Home() {
-  const leftDoggo = {
-    name: "Corgi",
-    image: "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/14112506/Pembroke-Welsh-Corgi-standing-outdoors-in-the-fall.jpg",
-    description: "Left Hand Doggo"
-  }
+export async function getServerSideProps() {
+  const twoDogs = await getTwoDogs();
 
-  const rightDoggo = {
-    name: "Daschund",
-    image: "https://thehappypuppysite.com/wp-content/uploads/2018/10/dapple-dachshund-long.jpg",
-    description: "Right Hand Doggo"
+  return {
+    props: {
+      twoDogs
+    }
   }
+}
+
+export default function Home(props) {
+  const leftDoggo = props.twoDogs[0];
+  const rightDoggo = props.twoDogs[1];
 
   return (
     <Layout home>
@@ -26,7 +29,7 @@ export default function Home() {
           <div className={"row"}>
             <div className={"col-md-12 row"}>
               <div className={"col-md-4"}>
-                <DoggoCard doggoCardProps={leftDoggo} />
+                <DoggoCard doggoCardProps={leftDoggo} rotateCW={false} />
               </div>
               <div className={"col-md-4"}>
                 <div className={"card text-center"}>
@@ -34,15 +37,17 @@ export default function Home() {
                     <h3 className={"card-text"}>
                       Choose a doggo
                     </h3>
-                    <button type="button" className={"btn btn-danger btn-lg"}>
-                      Shuffle
-                      <Shuffle color="white" size={24} />
-                    </button>
+                    <Link href='#'>
+                      <button type="button" className={"btn btn-danger btn-lg"}>
+                        Shuffle
+                        <Shuffle color="white" size={24} />
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
               <div className={"col-md-4"}>
-                <DoggoCard doggoCardProps={rightDoggo} />
+                <DoggoCard doggoCardProps={rightDoggo} rotateCW={true} />
               </div>
             </div>
           </div>
