@@ -1,30 +1,36 @@
 [
   {
+    "id": "1",
     "name": "Corgi",
     "image": "/images/dogs/corgi.svg",
     "description": "Pembroke Welsh Corgi"
   },
   {
+    "id": "2",
     "name": "Collie",
     "image": "/images/dogs/collie.svg",
     "description": "Collie"
   },
   {
+    "id": "3",
     "name": "Dachsund",
     "image": "/images/dogs/dachsund.svg",
     "description": "Sosig"
   },
   {
+    "id": "4",
     "name": "Dalmatian",
     "image": "/images/dogs/dalmatian.svg",
     "description": "101"
   },
   {
+    "id": "5",
     "name": "French Bulldog",
     "image": "/images/dogs/french-bulldog.svg",
     "description": "Frenchie"
   },
   {
+    "id": "6",
     "name": "Jack Russel",
     "image": "/images/dogs/jack-russel-terrier.svg",
     "description": "Jack Russel"

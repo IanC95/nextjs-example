@@ -3,8 +3,10 @@ import Image from 'next/image'
 import { Check } from 'react-feather'
 import Link from 'next/link'
 
-export default function DoggoCard({ doggoCardProps, rotateCW, opponentName }) {
+export default function DoggoCard({ doggoCardProps, rotateCW, opponentId }) {
     const rotateClassName = rotateCW ? styles.enlargeOnHoverCCW : styles.enlargeOnHoverCW
+    const thisDogId = doggoCardProps.id;
+    const hrefString = "?winner="+thisDogId+"&loser="+opponentId;
 
     return (
 
@@ -25,8 +27,8 @@ export default function DoggoCard({ doggoCardProps, rotateCW, opponentName }) {
                 <p className={"card-text"}>{doggoCardProps.description}</p>
             </div>
             <div className={"card-footer"}>
-                <Link href="#">
-                    <button type="button" className={"btn btn-primary btn-lg stretched-link"}>
+                <Link href={hrefString}>
+                    <button id="button" type="button" className={"btn btn-primary btn-lg stretched-link"}>
                         <Check color="white" size={24} />
                     </button>
                 </Link>

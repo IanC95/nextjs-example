@@ -3,9 +3,15 @@ import Link from 'next/link'
 import Layout, { siteTitle } from '../components/layout'
 import DoggoCard from '../components/doggoCard'
 import { Shuffle } from 'react-feather'
-import { getTwoDogs } from '../lib/dogs'
+import { getTwoDogs, competition } from '../lib/dogs'
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
+  const query = context.query;
+
+  if ( query.winner && query.loser) {
+    competition(query.winner, query.loser);
+  }
+
   const twoDogs = await getTwoDogs();
 
   return {
@@ -29,7 +35,7 @@ export default function Home(props) {
           <div className={"row"}>
             <div className={"col-md-12 row"}>
               <div className={"col-md-4"}>
-                <DoggoCard doggoCardProps={leftDoggo} rotateCW={false} oponentName={rightDoggo.name} />
+                <DoggoCard doggoCardProps={leftDoggo} rotateCW={false} opponentId={rightDoggo.id} />
               </div>
               <div className={"col-md-4"}>
                 <div className={"card text-center"}>
@@ -47,7 +53,7 @@ export default function Home(props) {
                 </div>
               </div>
               <div className={"col-md-4"}>
-                <DoggoCard doggoCardProps={rightDoggo} rotateCW={true} opponentName={leftDoggo.name} />
+                <DoggoCard doggoCardProps={rightDoggo} rotateCW={true} opponentId={leftDoggo.id} />
               </div>
             </div>
           </div>
